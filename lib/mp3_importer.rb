@@ -1,19 +1,15 @@
 class MP3Importer
-  attr_reader :path
+  attr_accessor :path
 
-  def initialize(filepath)
-    @path = filepath
+  def initialize(filename)
+    @path = filename
   end
 
   def files
     @files = Dir.entries(@path)
-    @files.delete_if {|file| file == "." || file == ".."}
+    @files.delete_if{|element| element == "." || element == ".."}
   end
 
   def import
-    self.files.each do |file|
-      song = Song.new_by_filename(file)
-      Artist.all << song unless Artist.all.include?(song)
-    end
   end
 end

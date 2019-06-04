@@ -4,7 +4,7 @@ class Artist
 
   def initialize(name)
     @name = name
-    @songs =[]
+    @songs = []
   end
 
   def add_song(song)
@@ -16,15 +16,14 @@ class Artist
   end
 
   def self.all
-    @@all
+  @@all
   end
 
   def self.find_or_create_by_name(name)
-    self.all.detect {|artist| artist.name == name} || Artist.new(name) #will check the all aray for name matches, and if false, ruby will create a new instance of artist
+    self.all.detect{ |artist| artist.name == name || Artist.new(name) }
   end
 
   def print_songs
-    @songs.each {|song| puts song.name} #will iterate over song array, and output the name of the song
+    @songs
   end
-
 end
